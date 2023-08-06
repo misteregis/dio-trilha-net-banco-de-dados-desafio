@@ -17,7 +17,7 @@ CREATE TABLE movies (
     duration int
 );
 
-CREATE TABLE movie_cast (
+CREATE TABLE movies_cast (
     id int AUTO_INCREMENT PRIMARY KEY,
     actor_id int NOT NULL,
     movie_id int,
@@ -32,7 +32,7 @@ CREATE TABLE genres (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE genre_movies (
+CREATE TABLE movie_genres (
     id int AUTO_INCREMENT PRIMARY KEY,
     gender_id int,
     movie_id int,
@@ -109,7 +109,7 @@ INSERT INTO genres (id, gender) VALUES
     (12, 'Suspense'),
     (13, 'Guerra');
 
-INSERT INTO movie_cast (id, actor_id, movie_id, role) VALUES
+INSERT INTO movies_cast (id, actor_id, movie_id, role) VALUES
     (1, 1, 1, 'John Scottie Ferguson'),
     (2, 2, 2, 'Miss Giddens'),
     (3, 3, 3, 'T.E. Lawrence'),
@@ -132,7 +132,7 @@ INSERT INTO movie_cast (id, actor_id, movie_id, role) VALUES
     (20, 8, 9, 'J.J. Gittes'),
     (21, 18, 19, 'Alfred Borden');
 
-INSERT INTO genre_movies (id, gender_id, movie_id) VALUES
+INSERT INTO movie_genres (id, gender_id, movie_id) VALUES
     (1, 1, 22),
     (2, 2, 17),
     (3, 2, 3),

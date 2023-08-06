@@ -1,37 +1,37 @@
 CREATE TABLE actors (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    first_name VARCHAR(20) NULL,
-    last_name VARCHAR(20) NULL,
-    gender VARCHAR(1) NULL
+    id SERIAL PRIMARY KEY,
+    first_name varchar(20) COLLATE "C" DEFAULT NULL,
+    last_name varchar(20) COLLATE "C" DEFAULT NULL,
+    gender varchar(1) COLLATE "C" DEFAULT NULL
 );
 
 CREATE TABLE movies (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    name VARCHAR(50) NULL,
-    year INTEGER NULL,
-    duration INTEGER NULL
+    id SERIAL PRIMARY KEY,
+    name varchar(50) COLLATE "C",
+    year int,
+    duration int
 );
 
 CREATE TABLE movies_cast (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    actor_id INTEGER NOT NULL,
-    movie_id INTEGER NULL,
-    role VARCHAR(30) NULL,
-    FOREIGN KEY (actor_id) REFERENCES actors (id),
-    FOREIGN KEY (movie_id) REFERENCES movies (id)
+    id SERIAL PRIMARY KEY,
+    actor_id int NOT NULL,
+    movie_id int,
+    role varchar(30) COLLATE "C",
+    CONSTRAINT FK_movie_cast_actor_id FOREIGN KEY (actor_id) REFERENCES actors(id),
+    CONSTRAINT FK_movie_cast_movie_id FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
 
 CREATE TABLE genres (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    gender VARCHAR(20) NULL
+    id SERIAL PRIMARY KEY,
+    gender varchar(20) COLLATE "C" DEFAULT NULL
 );
 
 CREATE TABLE movie_genres (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    gender_id INTEGER NULL,
-    movie_id INTEGER NULL,
-    FOREIGN KEY (gender_id) REFERENCES genres (id),
-    FOREIGN KEY (movie_id) REFERENCES movies (id)
+    id SERIAL PRIMARY KEY,
+    gender_id int,
+    movie_id int,
+    CONSTRAINT FK_genre_movies_movie_id FOREIGN KEY (movie_id) REFERENCES movies(id),
+    CONSTRAINT FK_genre_movies_gender_id FOREIGN KEY (gender_id) REFERENCES genres(id)
 );
 
 INSERT INTO actors (id, first_name, last_name, gender) VALUES
