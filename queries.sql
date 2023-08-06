@@ -1,4 +1,4 @@
--- Comente ou remova a linha abaixo se for usar SQLite, pois o comando "USE" não é compatível.
+-- Comente ou remova a linha abaixo se for usar pgSQL/SQLite, pois o comando "USE" não é compatível.
 USE movies;
 
 -- 1 - Buscar o nome e ano dos filmes
